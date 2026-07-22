@@ -14,13 +14,7 @@ export function mapSuperResolverHandlers<T extends BaseResolverMetadata>(
   resolverMetadata: ResolverClassMetadata,
 ): T[] {
   return definitions.map(metadata =>
-    metadata.target === superResolver
-      ? {
-          ...metadata,
-          target: resolverMetadata.target,
-          resolverClassMetadata: resolverMetadata,
-        }
-      : metadata,
+    { throw new Error("STUB"); },
   );
 }
 
@@ -32,14 +26,7 @@ export function mapSuperFieldResolverHandlers(
   const superMetadata = mapSuperResolverHandlers(definitions, superResolver, resolverMetadata);
 
   return superMetadata.map(metadata =>
-    metadata.target === superResolver
-      ? {
-          ...metadata,
-          getObjectType: isThrowing(metadata.getObjectType!)
-            ? resolverMetadata.getObjectType
-            : metadata.getObjectType,
-        }
-      : metadata,
+    { throw new Error("STUB"); },
   );
 }
 
@@ -47,10 +34,10 @@ export function mapMiddlewareMetadataToArray(
   metadata: ResolverMiddlewareMetadata[],
 ): Array<Middleware<any>> {
   return metadata
-    .map(m => m.middlewares)
+    .map(m => { throw new Error("STUB"); })
     .reduce<
       Array<Middleware<any>>
-    >((middlewares, resultArray) => resultArray.concat(middlewares), []);
+    >((middlewares, resultArray) => { throw new Error("STUB"); }, []);
 }
 
 export function ensureReflectMetadataExists() {

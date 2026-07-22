@@ -27,48 +27,7 @@ export function createHandlerResolver(
   applyAuthChecker(middlewares, authChecker, container, authMode, resolverMetadata.roles);
 
   return (root, args, context, info) => {
-    const resolverData: ResolverData<any> = { root, args, context, info };
-    const targetInstanceOrPromise: Promise<any> | any = container.getInstance(
-      resolverMetadata.target,
-      resolverData,
-    );
-    if (isPromiseLike(targetInstanceOrPromise)) {
-      return targetInstanceOrPromise.then(targetInstance =>
-        applyMiddlewares(container, resolverData, middlewares, () => {
-          const params: Promise<any[]> | any[] = getParams(
-            resolverMetadata.params!,
-            resolverData,
-            globalValidate,
-            validateFn,
-          );
-          if (isPromiseLike(params)) {
-            return params.then(resolvedParams =>
-              // eslint-disable-next-line prefer-spread
-              targetInstance[resolverMetadata.methodName].apply(targetInstance, resolvedParams),
-            );
-          }
-          // eslint-disable-next-line prefer-spread
-          return targetInstance[resolverMetadata.methodName].apply(targetInstance, params);
-        }),
-      );
-    }
-    return applyMiddlewares(container, resolverData, middlewares, () => {
-      const params: Promise<any[]> | any[] = getParams(
-        resolverMetadata.params!,
-        resolverData,
-        globalValidate,
-        validateFn,
-      );
-      const targetInstance = targetInstanceOrPromise;
-      if (isPromiseLike(params)) {
-        return params.then(resolvedParams =>
-          // eslint-disable-next-line prefer-spread
-          targetInstance[resolverMetadata.methodName].apply(targetInstance, resolvedParams),
-        );
-      }
-      // eslint-disable-next-line prefer-spread
-      return targetInstance[resolverMetadata.methodName].apply(targetInstance, params);
-    });
+      throw new Error("STUB");
   };
 }
 
@@ -92,28 +51,7 @@ export function createAdvancedFieldResolver(
   applyAuthChecker(middlewares, authChecker, container, authMode, fieldResolverMetadata.roles);
 
   return (root, args, context, info) => {
-    const resolverData: ResolverData<any> = { root, args, context, info };
-    const targetInstance: any = convertToType(targetType, root);
-    return applyMiddlewares(container, resolverData, middlewares, () => {
-      const handlerOrGetterValue = targetInstance[fieldResolverMetadata.methodName];
-      if (typeof handlerOrGetterValue !== "function") {
-        // getter
-        return handlerOrGetterValue;
-      }
-      // method
-      const params: Promise<any[]> | any[] = getParams(
-        fieldResolverMetadata.params!,
-        resolverData,
-        globalValidate,
-        validateFn,
-      );
-      if (isPromiseLike(params)) {
-        return params.then(resolvedParams =>
-          handlerOrGetterValue.apply(targetInstance, resolvedParams),
-        );
-      }
-      return handlerOrGetterValue.apply(targetInstance, params);
-    });
+      throw new Error("STUB");
   };
 }
 
@@ -125,8 +63,7 @@ export function createBasicFieldResolver(
   applyAuthChecker(middlewares, authChecker, container, authMode, fieldMetadata.roles);
 
   return (root, args, context, info) => {
-    const resolverData: ResolverData<any> = { root, args, context, info };
-    return applyMiddlewares(container, resolverData, middlewares, () => root[fieldMetadata.name]);
+      throw new Error("STUB");
   };
 }
 
@@ -141,12 +78,6 @@ export function wrapResolverWithAuthChecker(
   }
 
   return (root, args, context, info) => {
-    const resolverData: ResolverData<any> = { root, args, context, info };
-    return AuthMiddleware(
-      authChecker,
-      container,
-      authMode,
-      roles,
-    )(resolverData, async () => resolver(root, args, context, info));
+      throw new Error("STUB");
   };
 }

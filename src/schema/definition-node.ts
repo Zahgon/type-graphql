@@ -18,59 +18,7 @@ import { type DirectiveMetadata } from "@/metadata/definitions";
 import { type SetRequired } from "@/typings";
 
 export function getDirectiveNode(directive: DirectiveMetadata): ConstDirectiveNode {
-  // Inline and trim start
-  const nameOrDefinition = directive.nameOrDefinition.replaceAll("\n", " ").trimStart();
-  const { args } = directive;
-
-  if (nameOrDefinition === "") {
-    throw new InvalidDirectiveError(
-      "Please pass at-least one directive name or definition to the @Directive decorator",
-    );
-  }
-
-  if (!nameOrDefinition.startsWith("@")) {
-    return {
-      kind: Kind.DIRECTIVE,
-      name: {
-        kind: Kind.NAME,
-        value: nameOrDefinition,
-      },
-      arguments: Object.keys(args).map<ConstArgumentNode>(argKey => ({
-        kind: Kind.ARGUMENT,
-        name: {
-          kind: Kind.NAME,
-          value: argKey,
-        },
-        value: parseConstValue(args[argKey]),
-      })),
-    };
-  }
-
-  let parsed: DocumentNode;
-  try {
-    parsed = parse(`type String ${nameOrDefinition}`);
-  } catch (err) {
-    throw new InvalidDirectiveError(
-      `Error parsing directive definition "${directive.nameOrDefinition}"`,
-    );
-  }
-
-  const definitions = parsed.definitions as ObjectTypeDefinitionNode[];
-  const directives = definitions
-    .filter(
-      (it): it is SetRequired<ObjectTypeDefinitionNode, "directives"> =>
-        !!it.directives && it.directives.length > 0,
-    )
-    .map(it => it.directives)
-    .flat();
-
-  if (directives.length !== 1) {
-    throw new InvalidDirectiveError(
-      `Please pass only one directive name or definition at a time to the @Directive decorator "${directive.nameOrDefinition}"`,
-    );
-  }
-
-  return directives[0];
+    throw new Error("STUB");
 }
 
 export function getObjectTypeDefinitionNode(

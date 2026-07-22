@@ -35,9 +35,11 @@
 import type * as src from "./index";
 
 export const dummyValue = "";
-export function dummyFn() {}
+export function dummyFn() {
+    throw new Error("STUB");
+}
 export function dummyDecorator() {
-  return dummyFn;
+    throw new Error("STUB");
 }
 
 export const Arg: typeof src.Arg = dummyDecorator;

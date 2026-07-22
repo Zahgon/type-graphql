@@ -6,11 +6,6 @@ export class WrongNullableListOptionError extends Error {
     propertyName: string,
     nullable: boolean | NullableListOptions | undefined,
   ) {
-    super(
-      `Wrong nullable option set for ${targetName}#${propertyName}. ` +
-        `You cannot combine non-list type with nullable '${nullable}'.`,
-    );
-
-    Object.setPrototypeOf(this, new.target.prototype);
+      throw new Error("STUB");
   }
 }

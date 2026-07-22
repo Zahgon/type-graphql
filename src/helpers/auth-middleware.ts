@@ -10,22 +10,6 @@ export function AuthMiddleware(
   roles: any[],
 ): MiddlewareFn {
   return async (action, next) => {
-    let accessGranted: boolean;
-    if (authChecker.prototype) {
-      const authCheckerInstance = await container.getInstance(authChecker, action);
-      accessGranted = await authCheckerInstance.check(action, roles);
-    } else {
-      accessGranted = await (authChecker as AuthCheckerFn<any, any>)(action, roles);
-    }
-
-    if (!accessGranted) {
-      if (authMode === "null") {
-        return null;
-      }
-      if (authMode === "error") {
-        throw roles.length === 0 ? new AuthenticationError() : new AuthorizationError();
-      }
-    }
-    return next();
+      throw new Error("STUB");
   };
 }

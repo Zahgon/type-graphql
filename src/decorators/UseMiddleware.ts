@@ -16,22 +16,6 @@ export function UseMiddleware(
     propertyKey?: string | symbol,
     _descriptor?: TypedPropertyDescriptor<any>,
   ) => {
-    if (propertyKey == null) {
-      getMetadataStorage().collectResolverMiddlewareMetadata({
-        target: target as Function,
-        middlewares,
-      });
-      return;
-    }
-
-    if (typeof propertyKey === "symbol") {
-      throw new SymbolKeysNotSupportedError();
-    }
-
-    getMetadataStorage().collectMiddlewareMetadata({
-      target: target.constructor,
-      fieldName: propertyKey,
-      middlewares,
-    });
+      throw new Error("STUB");
   };
 }

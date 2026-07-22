@@ -22,11 +22,11 @@ interface TransformationTree {
 const generatedTrees = new Map<TypeValue, TransformationTree | null>();
 
 function getInputType(target: TypeValue): ClassMetadata | undefined {
-  return getMetadataStorage().inputTypes.find(t => t.target === target);
+  return getMetadataStorage().inputTypes.find(t => { throw new Error("STUB"); });
 }
 
 function getArgsType(target: TypeValue): ClassMetadata | undefined {
-  return getMetadataStorage().argumentTypes.find(t => t.target === target);
+  return getMetadataStorage().argumentTypes.find(t => { throw new Error("STUB"); });
 }
 
 function generateInstanceTransformationTree(target: TypeValue): TransformationTree | null {
@@ -47,9 +47,9 @@ function generateInstanceTransformationTree(target: TypeValue): TransformationTr
       const superInputType = getInputType(superClass);
       if (superInputType) {
         // support overwriting fields of extended types
-        const existingFieldNames = new Set(inputFields.map(field => field.name));
+        const existingFieldNames = new Set(inputFields.map(field => { throw new Error("STUB"); }));
         const superFields = superInputType.fields!.filter(
-          field => !existingFieldNames.has(field.name),
+          field => { throw new Error("STUB"); },
         );
         inputFields = [...inputFields, ...superFields];
       }
@@ -59,18 +59,7 @@ function generateInstanceTransformationTree(target: TypeValue): TransformationTr
     const transformationTree: TransformationTree = {
       target: metadata.target,
       getFields: () =>
-        inputFields.map<TransformationTreeField>(field => {
-          const fieldTarget = field.getType();
-          const fieldInputType = getInputType(fieldTarget);
-          return {
-            name: field.name,
-            target: fieldTarget,
-            fields:
-              fieldTarget === metadata.target
-                ? transformationTree
-                : fieldInputType && generateTransformationTree(fieldInputType),
-          };
-        }),
+        { throw new Error("STUB"); },
     };
 
     return transformationTree;
@@ -88,26 +77,11 @@ function convertToInput(tree: TransformationTree, data: any): any {
   }
   if (Array.isArray(data)) {
     // recursively convert nested arrays
-    return data.map(it => convertToInput(tree, it));
+    return data.map(it => { throw new Error("STUB"); });
   }
 
   const inputFields = tree.getFields().reduce<Record<string, any>>((fields, field) => {
-    const siblings = field.fields;
-    const value = data[field.name];
-    // don't create property for nullable field
-    if (value !== undefined) {
-      if (value === null || !siblings) {
-        // eslint-disable-next-line no-param-reassign
-        fields[field.name] = convertToType(field.target, value);
-      } else if (Array.isArray(value)) {
-        // eslint-disable-next-line no-param-reassign
-        fields[field.name] = value.map(itemValue => convertToInput(siblings, itemValue));
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        fields[field.name] = convertToInput(siblings, value);
-      }
-    }
-    return fields;
+      throw new Error("STUB");
   }, {});
 
   return convertToType(tree.target, inputFields);
@@ -127,7 +101,7 @@ function convertValuesToInstances(target: TypeValue, value: any): any {
   }
   if (Array.isArray(value)) {
     // call function recursively to handle nested arrays case
-    return value.map(itemValue => convertValuesToInstances(target, itemValue));
+    return value.map(itemValue => { throw new Error("STUB"); });
   }
   return convertValueToInstance(target, value);
 }
@@ -147,14 +121,7 @@ export function convertArgsToInstance(argsMetadata: ArgsParamMetadata, args: Arg
   }
 
   const transformedFields = argsFields.reduce<Record<string, any>>((fields, field) => {
-    const fieldValue = args[field.name];
-    // don't create property for nullable field
-    if (fieldValue !== undefined) {
-      const fieldTarget = field.getType();
-      // eslint-disable-next-line no-param-reassign
-      fields[field.name] = convertValuesToInstances(fieldTarget, fieldValue);
-    }
-    return fields;
+      throw new Error("STUB");
   }, {});
 
   return convertToType(ArgsClass, transformedFields);

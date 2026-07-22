@@ -16,69 +16,10 @@ export function getParams(
   globalValidateFn: ValidatorFn | undefined,
 ): Promise<any[]> | any[] {
   const paramValues = params
-    .sort((a, b) => a.index - b.index)
+    .sort((a, b) => { throw new Error("STUB"); })
     // eslint-disable-next-line array-callback-return, consistent-return
     .map(paramInfo => {
-      switch (paramInfo.kind) {
-        case "args":
-          return validateArg(
-            convertArgsToInstance(paramInfo, resolverData.args),
-            paramInfo.getType(),
-            resolverData,
-            globalValidate,
-            paramInfo.validateSettings,
-            globalValidateFn,
-            paramInfo.validateFn,
-          );
-
-        case "arg":
-          return validateArg(
-            convertArgToInstance(paramInfo, resolverData.args),
-            paramInfo.getType(),
-            resolverData,
-            globalValidate,
-            paramInfo.validateSettings,
-            globalValidateFn,
-            paramInfo.validateFn,
-          );
-
-        case "context":
-          if (paramInfo.propertyName) {
-            return resolverData.context[paramInfo.propertyName];
-          }
-          return resolverData.context;
-
-        case "root": {
-          const rootValue = paramInfo.propertyName
-            ? resolverData.root[paramInfo.propertyName]
-            : resolverData.root;
-
-          if (!paramInfo.getType) {
-            return rootValue;
-          }
-          return convertToType(paramInfo.getType(), rootValue);
-        }
-
-        case "info":
-          return resolverData.info;
-
-        case "custom":
-          if (paramInfo.options.arg) {
-            const arg = paramInfo.options.arg!;
-            return validateArg(
-              convertArgToInstance(arg, resolverData.args),
-              arg.getType(),
-              resolverData,
-              globalValidate,
-              arg.validateSettings,
-              globalValidateFn,
-              arg.validateFn,
-            ).then(() => paramInfo.resolver(resolverData));
-          }
-          return paramInfo.resolver(resolverData);
-
-        // no default
-      }
+        throw new Error("STUB");
     });
 
   if (paramValues.some(isPromiseLike)) {
@@ -132,8 +73,7 @@ export function applyMiddlewares(
     }
     let nextResult: any;
     const result = await handlerFn(resolverData, async () => {
-      nextResult = await dispatchHandler(currentIndex + 1);
-      return nextResult;
+        throw new Error("STUB");
     });
     return result !== undefined ? result : nextResult;
   }

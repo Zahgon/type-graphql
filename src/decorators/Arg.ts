@@ -26,24 +26,5 @@ export function Arg(
   returnTypeFuncOrOptions?: ReturnTypeFunc | ArgOptions,
   maybeOptions?: ArgOptions,
 ): ParameterDecorator {
-  return (prototype, propertyKey, parameterIndex) => {
-    const { options, returnTypeFunc } = getTypeDecoratorParams(
-      returnTypeFuncOrOptions,
-      maybeOptions,
-    );
-    getMetadataStorage().collectHandlerParamMetadata({
-      kind: "arg",
-      name,
-      description: options.description,
-      deprecationReason: options.deprecationReason,
-      ...getParamInfo({
-        prototype,
-        propertyKey,
-        parameterIndex,
-        returnTypeFunc,
-        options,
-        argName: name,
-      }),
-    });
-  };
+    throw new Error("STUB");
 }

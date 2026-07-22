@@ -3,17 +3,13 @@ import { type BuildSchemaOptions, buildSchema, buildSchemaSync } from "./buildSc
 import { createResolversMap } from "./createResolversMap";
 
 function createTypeDefsAndResolversMap(schema: GraphQLSchema) {
-  const typeDefs = printSchema(schema);
-  const resolvers = createResolversMap(schema);
-  return { typeDefs, resolvers };
+    throw new Error("STUB");
 }
 
 export async function buildTypeDefsAndResolvers(options: BuildSchemaOptions) {
-  const schema = await buildSchema(options);
-  return createTypeDefsAndResolversMap(schema);
+    throw new Error("STUB");
 }
 
 export function buildTypeDefsAndResolversSync(options: BuildSchemaOptions) {
-  const schema = buildSchemaSync(options);
-  return createTypeDefsAndResolversMap(schema);
+    throw new Error("STUB");
 }

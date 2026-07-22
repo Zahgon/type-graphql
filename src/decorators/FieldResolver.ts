@@ -20,43 +20,6 @@ export function FieldResolver(
   maybeOptions?: AdvancedOptions,
 ): MethodDecorator {
   return (prototype, propertyKey) => {
-    if (typeof propertyKey === "symbol") {
-      throw new SymbolKeysNotSupportedError();
-    }
-
-    let getType: TypeValueThunk | undefined;
-    let typeOptions: TypeOptions | undefined;
-
-    const { options, returnTypeFunc } = getTypeDecoratorParams(
-      returnTypeFuncOrOptions,
-      maybeOptions,
-    );
-
-    // try to get return type info
-    try {
-      const typeInfo = findType({
-        metadataKey: "design:returntype",
-        prototype,
-        propertyKey,
-        returnTypeFunc,
-        typeOptions: options,
-      });
-      typeOptions = typeInfo.typeOptions;
-      getType = typeInfo.getType;
-    } catch {
-      /* empty */
-    }
-
-    getMetadataStorage().collectFieldResolverMetadata({
-      kind: "external",
-      methodName: propertyKey,
-      schemaName: options.name || propertyKey,
-      target: prototype.constructor,
-      getType,
-      typeOptions,
-      complexity: options.complexity,
-      description: options.description,
-      deprecationReason: options.deprecationReason,
-    });
+      throw new Error("STUB");
   };
 }

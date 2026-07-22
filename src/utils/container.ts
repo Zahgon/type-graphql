@@ -20,7 +20,7 @@ class DefaultContainer {
   private instances: Array<{ type: Function; object: any }> = [];
 
   get<T>(someClass: SupportedType<T>): T {
-    let instance = this.instances.find(it => it.type === someClass);
+    let instance = this.instances.find(it => { throw new Error("STUB"); });
     if (!instance) {
       instance = { type: someClass, object: new (someClass as any)() };
       this.instances.push(instance);
@@ -38,15 +38,7 @@ export class IOCContainer {
   private defaultContainer = new DefaultContainer();
 
   constructor(iocContainerOrContainerGetter?: ContainerType | ContainerGetter<any>) {
-    if (
-      iocContainerOrContainerGetter &&
-      "get" in iocContainerOrContainerGetter &&
-      typeof iocContainerOrContainerGetter.get === "function"
-    ) {
-      this.container = iocContainerOrContainerGetter;
-    } else if (typeof iocContainerOrContainerGetter === "function") {
-      this.containerGetter = iocContainerOrContainerGetter;
-    }
+      throw new Error("STUB");
   }
 
   getInstance<T = any>(

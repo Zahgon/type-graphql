@@ -83,7 +83,7 @@ export function findType({
   }
   if (metadataDesignType) {
     return {
-      getType: () => metadataDesignType!,
+      getType: () => { throw new Error("STUB"); },
       typeOptions: options,
     };
   }

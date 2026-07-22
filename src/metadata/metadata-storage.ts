@@ -103,68 +103,63 @@ export class MetadataStorage {
   paramsCache = new Map<Function, Map<string, ParamMetadata[]>>();
 
   collectQueryHandlerMetadata(definition: ResolverMetadata) {
-    this.queries.push(definition);
+      throw new Error("STUB");
   }
 
   collectMutationHandlerMetadata(definition: ResolverMetadata) {
-    this.mutations.push(definition);
+      throw new Error("STUB");
   }
 
   collectSubscriptionHandlerMetadata(definition: SubscriptionResolverMetadata) {
-    this.subscriptions.push(definition);
+      throw new Error("STUB");
   }
 
   collectFieldResolverMetadata(definition: FieldResolverMetadata) {
-    this.fieldResolvers.push(definition);
+      throw new Error("STUB");
   }
 
   collectObjectMetadata(definition: ObjectClassMetadata) {
-    this.objectTypes.push(definition);
+      throw new Error("STUB");
   }
 
   collectInputMetadata(definition: ClassMetadata) {
-    this.inputTypes.push(definition);
+      throw new Error("STUB");
   }
 
   collectArgsMetadata(definition: ClassMetadata) {
-    this.argumentTypes.push(definition);
+      throw new Error("STUB");
   }
 
   collectInterfaceMetadata(definition: InterfaceClassMetadata) {
-    this.interfaceTypes.push(definition);
+      throw new Error("STUB");
   }
 
   collectAuthorizedFieldMetadata(definition: AuthorizedMetadata) {
-    this.authorizedFields.push(definition);
+      throw new Error("STUB");
   }
 
   collectAuthorizedResolverMetadata(definition: AuthorizedClassMetadata) {
-    this.authorizedResolver.push(definition);
+      throw new Error("STUB");
   }
 
   collectEnumMetadata(definition: EnumMetadata) {
-    this.enums.push(definition);
+      throw new Error("STUB");
   }
 
   collectUnionMetadata(definition: UnionMetadata) {
-    const unionSymbol = Symbol(definition.name);
-    this.unions.push({
-      ...definition,
-      symbol: unionSymbol,
-    });
-    return unionSymbol;
+      throw new Error("STUB");
   }
 
   collectMiddlewareMetadata(definition: MiddlewareMetadata) {
-    this.middlewares.push(definition);
+      throw new Error("STUB");
   }
 
   collectResolverMiddlewareMetadata(definition: ResolverMiddlewareMetadata) {
-    this.resolverMiddlewares.push(definition);
+      throw new Error("STUB");
   }
 
   collectResolverClassMetadata(definition: ResolverClassMetadata) {
-    this.resolverClasses.push(definition);
+      throw new Error("STUB");
   }
 
   collectClassFieldMetadata(definition: FieldMetadata) {
@@ -172,27 +167,27 @@ export class MetadataStorage {
   }
 
   collectHandlerParamMetadata(definition: ParamMetadata) {
-    this.params.push(definition);
+      throw new Error("STUB");
   }
 
   collectDirectiveClassMetadata(definition: DirectiveClassMetadata) {
-    this.classDirectives.push(definition);
+      throw new Error("STUB");
   }
 
   collectDirectiveFieldMetadata(definition: DirectiveFieldMetadata) {
-    this.fieldDirectives.push(definition);
+      throw new Error("STUB");
   }
 
   collectDirectiveArgumentMetadata(definition: DirectiveArgumentMetadata) {
-    this.argumentDirectives.push(definition);
+      throw new Error("STUB");
   }
 
   collectExtensionsClassMetadata(definition: ExtensionsClassMetadata) {
-    this.classExtensions.push(definition);
+      throw new Error("STUB");
   }
 
   collectExtensionsFieldMetadata(definition: ExtensionsFieldMetadata) {
-    this.fieldExtensions.push(definition);
+      throw new Error("STUB");
   }
 
   initCache() {
@@ -200,132 +195,67 @@ export class MetadataStorage {
 
     if (this.resolverClasses?.length) {
       this.resolverClasses.forEach(resolverClass => {
-        if (!this.resolverClassesCache.has(resolverClass.target)) {
-          this.resolverClassesCache.set(resolverClass.target, resolverClass);
-        }
+          throw new Error("STUB");
       });
     }
 
     if (this.params?.length) {
       this.params.forEach(param => {
-        if (!this.paramsCache.has(param.target)) {
-          this.paramsCache.set(param.target, new Map());
-        }
-        if (!this.paramsCache.get(param.target)!.has(param.methodName)) {
-          this.paramsCache.get(param.target)!.set(param.methodName, []);
-        }
-        this.paramsCache.get(param.target)!.get(param.methodName)!.push(param);
+          throw new Error("STUB");
       });
     }
 
     if (this.middlewares?.length) {
       this.middlewares.forEach(middleware => {
-        if (!this.middlewaresByTargetAndFieldCache.has(middleware.target)) {
-          this.middlewaresByTargetAndFieldCache.set(middleware.target, new Map());
-        }
-
-        if (
-          !this.middlewaresByTargetAndFieldCache.get(middleware.target)!.has(middleware.fieldName)
-        ) {
-          this.middlewaresByTargetAndFieldCache
-            .get(middleware.target)!
-            .set(middleware.fieldName, new Set());
-        }
-
-        if (
-          !this.middlewaresByTargetAndFieldCache
-            .get(middleware.target)!
-            .get(middleware.fieldName)!
-            .has(middleware)
-        ) {
-          this.middlewaresByTargetAndFieldCache
-            .get(middleware.target)!
-            .get(middleware.fieldName)!
-            .add(middleware);
-        }
+          throw new Error("STUB");
       });
     }
 
     if (this.resolverMiddlewares?.length) {
       this.resolverMiddlewares.forEach(middleware => {
-        const key = middleware.target;
-        if (!this.resolverMiddlewaresByTargetCache.has(key)) {
-          this.resolverMiddlewaresByTargetCache.set(key, new Set());
-        }
-
-        if (!this.resolverMiddlewaresByTargetCache.get(key)!.has(middleware)) {
-          this.resolverMiddlewaresByTargetCache.get(key)!.add(middleware);
-        }
+          throw new Error("STUB");
       });
     }
 
     if (this.fieldDirectives?.length) {
       this.fieldDirectives.forEach(directive => {
-        if (!this.fieldDirectivesByTargetAndFieldCache.has(directive.target)) {
-          this.fieldDirectivesByTargetAndFieldCache.set(directive.target, new Map());
-        }
-        if (
-          !this.fieldDirectivesByTargetAndFieldCache.get(directive.target)!.has(directive.fieldName)
-        ) {
-          this.fieldDirectivesByTargetAndFieldCache
-            .get(directive.target)!
-            .set(directive.fieldName, []);
-        }
-        this.fieldDirectivesByTargetAndFieldCache
-          .get(directive.target)!
-          .get(directive.fieldName)!
-          .push(directive);
+          throw new Error("STUB");
       });
     }
 
     if (this.classDirectives?.length) {
       this.classDirectives.forEach(directive => {
-        const key = directive.target;
-        if (!this.classDirectivesByTargetCache.has(key)) {
-          this.classDirectivesByTargetCache.set(key, []);
-        }
-        this.classDirectivesByTargetCache.get(key)!.push(directive);
+          throw new Error("STUB");
       });
     }
 
     if (this.authorizedFields?.length) {
       this.authorizedFields.forEach(field => {
-        if (!this.authorizedFieldsByTargetAndFieldCache.has(field.target)) {
-          this.authorizedFieldsByTargetAndFieldCache.set(field.target, new Map());
-        }
-        if (!this.authorizedFieldsByTargetAndFieldCache.get(field.target)!.has(field.fieldName)) {
-          this.authorizedFieldsByTargetAndFieldCache.get(field.target)!.set(field.fieldName, field);
-        }
+          throw new Error("STUB");
       });
     }
 
     if (this.authorizedResolver?.length) {
       this.authorizedResolver.forEach(resolver => {
-        const key = resolver.target;
-        if (!this.authorizedResolverByTargetCache.has(key)) {
-          this.authorizedResolverByTargetCache.set(key, resolver);
-        }
+          throw new Error("STUB");
       });
     }
 
     if (this.fields?.length) {
       this.fields.forEach(field => {
-        if (!this.fieldsCache.has(field.target)) {
-          this.fieldsCache.set(field.target, []);
-        }
-        this.fieldsCache.get(field.target)!.push(field);
+          throw new Error("STUB");
       });
     }
 
     if (this.objectTypes?.length) {
       this.objectTypes.forEach(objType => {
-        this.objectTypesCache.set(objType.target, objType);
+          throw new Error("STUB");
       });
     }
 
     if (this.interfaceTypes?.length) {
       this.interfaceTypes.forEach(interfaceType => {
-        this.interfaceTypesCache.set(interfaceType.target, interfaceType);
+          throw new Error("STUB");
       });
     }
   }
@@ -354,60 +284,11 @@ export class MetadataStorage {
   }
 
   clear() {
-    this.queries = [];
-    this.mutations = [];
-    this.subscriptions = [];
-    this.fieldResolvers = [];
-    this.objectTypes = [];
-    this.inputTypes = [];
-    this.argumentTypes = [];
-    this.interfaceTypes = [];
-    this.authorizedFields = [];
-    this.authorizedResolver = [];
-    this.enums = [];
-    this.unions = [];
-    this.middlewares = [];
-    this.resolverMiddlewares = [];
-    this.classDirectives = [];
-    this.fieldDirectives = [];
-    this.argumentDirectives = [];
-    this.classExtensions = [];
-    this.fieldExtensions = [];
-    this.resolverClasses = [];
-    this.fields = [];
-    this.params = [];
-
-    this.clearMapCaches();
+      throw new Error("STUB");
   }
 
   clone() {
-    const cloned = new MetadataStorage();
-
-    // arrays are cloned to prevent mutation of original metadata storage when building schema
-    cloned.queries = [...this.queries];
-    cloned.mutations = [...this.mutations];
-    cloned.subscriptions = [...this.subscriptions];
-    cloned.fieldResolvers = [...this.fieldResolvers];
-    cloned.objectTypes = [...this.objectTypes];
-    cloned.inputTypes = [...this.inputTypes];
-    cloned.argumentTypes = [...this.argumentTypes];
-    cloned.interfaceTypes = [...this.interfaceTypes];
-    cloned.authorizedFields = [...this.authorizedFields];
-    cloned.authorizedResolver = [...this.authorizedResolver];
-    cloned.enums = [...this.enums];
-    cloned.unions = [...this.unions];
-    cloned.middlewares = [...this.middlewares];
-    cloned.resolverMiddlewares = [...this.resolverMiddlewares];
-    cloned.classDirectives = [...this.classDirectives];
-    cloned.fieldDirectives = [...this.fieldDirectives];
-    cloned.argumentDirectives = [...this.argumentDirectives];
-    cloned.classExtensions = [...this.classExtensions];
-    cloned.fieldExtensions = [...this.fieldExtensions];
-    cloned.resolverClasses = [...this.resolverClasses];
-    cloned.fields = [...this.fields];
-    cloned.params = [...this.params];
-
-    return cloned;
+      throw new Error("STUB");
   }
 
   private clearMapCaches() {
@@ -426,55 +307,13 @@ export class MetadataStorage {
 
   private buildClassMetadata(definitions: ClassMetadata[]) {
     definitions.forEach(def => {
-      if (!def.fields) {
-        const fields = this.fieldsCache.get(def.target) || [];
-        fields.forEach(field => {
-          field.roles = this.findFieldRoles(field.target, field.name);
-          field.params = this.paramsCache.get(field.target)?.get(field.name) || [];
-          field.middlewares = [
-            ...mapMiddlewareMetadataToArray([
-              ...(this.resolverMiddlewaresByTargetCache.get(field.target) || []),
-            ]),
-            ...mapMiddlewareMetadataToArray([
-              ...(this.middlewaresByTargetAndFieldCache.get(field.target)?.get(field.name) || []),
-            ]),
-          ];
-          field.directives = (
-            this.fieldDirectivesByTargetAndFieldCache.get(field.target)?.get(field.name) || []
-          ).map(it => it.directive);
-          field.extensions = this.findExtensions(field.target, field.name);
-        });
-        def.fields = fields;
-      }
-      if (!def.directives) {
-        def.directives = (this.classDirectivesByTargetCache.get(def.target) || []).map(
-          it => it.directive,
-        );
-      }
-      if (!def.extensions) {
-        def.extensions = this.findExtensions(def.target);
-      }
+        throw new Error("STUB");
     });
   }
 
   private buildResolversMetadata(definitions: BaseResolverMetadata[]) {
     definitions.forEach(def => {
-      def.resolverClassMetadata = this.resolverClassesCache.get(def.target);
-      def.params = this.paramsCache.get(def.target)?.get(def.methodName) || [];
-      def.roles = this.findFieldRoles(def.target, def.methodName);
-      def.middlewares = [
-        ...mapMiddlewareMetadataToArray([
-          ...(this.resolverMiddlewaresByTargetCache.get(def.target) || []),
-        ]),
-        ...mapMiddlewareMetadataToArray([
-          ...(this.middlewaresByTargetAndFieldCache.get(def.target)?.get(def.methodName) || []),
-        ]),
-      ];
-
-      def.directives = (
-        this.fieldDirectivesByTargetAndFieldCache.get(def.target)?.get(def.methodName) || []
-      ).map(it => it.directive);
-      def.extensions = this.findExtensions(def.target, def.methodName);
+        throw new Error("STUB");
     });
   }
 
@@ -484,92 +323,13 @@ export class MetadataStorage {
   ) {
     this.buildResolversMetadata(definitions);
     definitions.forEach(def => {
-      def.roles = this.findFieldRoles(def.target, def.methodName);
-      def.directives = (
-        this.fieldDirectivesByTargetAndFieldCache.get(def.target)?.get(def.methodName) || []
-      ).map(it => it.directive);
-      def.extensions = this.findExtensions(def.target, def.methodName);
-      def.getObjectType =
-        def.kind === "external"
-          ? this.resolverClassesCache.get(def.target)!.getObjectType
-          : () => def.target as ClassType;
-      if (def.kind === "external") {
-        const typeClass = this.resolverClassesCache.get(def.target)!.getObjectType!();
-        const typeMetadata =
-          this.objectTypesCache.get(typeClass) || this.interfaceTypesCache.get(typeClass);
-        if (!typeMetadata) {
-          throw new Error(
-            `Unable to find type metadata for input type or object type named '${typeClass.name}'`,
-          );
-        }
-
-        const typeField = typeMetadata.fields!.find(
-          fieldDef => fieldDef.schemaName === def.schemaName,
-        )!;
-        if (!typeField) {
-          const shouldCollectFieldMetadata =
-            !options.resolvers ||
-            options.resolvers.some(
-              resolverCls =>
-                resolverCls === def.target ||
-                Object.prototype.isPrototypeOf.call(def.target, resolverCls),
-            );
-          if (!def.getType || !def.typeOptions) {
-            throw new NoExplicitTypeError(def.target.name, def.methodName);
-          }
-          if (shouldCollectFieldMetadata) {
-            const fieldMetadata: FieldMetadata = {
-              name: def.methodName,
-              schemaName: def.schemaName,
-              getType: def.getType!,
-              target: typeClass,
-              typeOptions: def.typeOptions!,
-              deprecationReason: def.deprecationReason,
-              description: def.description,
-              complexity: def.complexity,
-              roles: def.roles!,
-              middlewares: def.middlewares!,
-              params: def.params!,
-              directives: def.directives,
-              extensions: def.extensions,
-            };
-            this.collectClassFieldMetadata(fieldMetadata);
-            typeMetadata.fields!.push(fieldMetadata);
-          }
-        } else {
-          typeField.complexity = def.complexity;
-          if (typeField.params!.length === 0) {
-            typeField.params = def.params!;
-          }
-          if (def.roles) {
-            typeField.roles = def.roles;
-          } else if (typeField.roles) {
-            def.roles = typeField.roles;
-          }
-        }
-      }
+        throw new Error("STUB");
     });
   }
 
   private buildExtendedResolversMetadata() {
     this.resolverClasses.forEach(def => {
-      let superResolver = Object.getPrototypeOf(def.target);
-
-      // copy and modify metadata of resolver from parent resolver class
-      while (superResolver.prototype) {
-        const superResolverMetadata = this.resolverClassesCache.get(superResolver);
-        if (superResolverMetadata) {
-          this.queries = mapSuperResolverHandlers(this.queries, superResolver, def);
-          this.mutations = mapSuperResolverHandlers(this.mutations, superResolver, def);
-          this.subscriptions = mapSuperResolverHandlers(this.subscriptions, superResolver, def);
-          this.fieldResolvers = mapSuperFieldResolverHandlers(
-            this.fieldResolvers,
-            superResolver,
-            def,
-          );
-        }
-        superResolver = Object.getPrototypeOf(superResolver);
-      }
+        throw new Error("STUB");
     });
   }
 
@@ -590,9 +350,8 @@ export class MetadataStorage {
     return storedExtensions
       .filter(
         entry =>
-          (entry.target === target || Object.prototype.isPrototypeOf.call(entry.target, target)) &&
-          (!("fieldName" in entry) || entry.fieldName === fieldName),
+          { throw new Error("STUB"); },
       )
-      .reduce((extensions, entry) => ({ ...extensions, ...entry.extensions }), {});
+      .reduce((extensions, entry) => { throw new Error("STUB"); }, {});
   }
 }

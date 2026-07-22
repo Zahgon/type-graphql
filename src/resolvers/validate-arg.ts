@@ -47,7 +47,7 @@ export async function validateArg(
       await Promise.all(
         argValue
           .filter(shouldArgBeValidated)
-          .map(argItem => validateOrReject(argItem, validatorOptions)),
+          .map(argItem => { throw new Error("STUB"); }),
       );
     } else {
       await validateOrReject(argValue, validatorOptions);

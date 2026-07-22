@@ -27,8 +27,7 @@ export function emitSchemaDefinitionFileSync(
   schema: GraphQLSchema,
   options: PrintSchemaOptions = defaultPrintSchemaOptions,
 ) {
-  const schemaFileContent = getSchemaFileContent(schema, options);
-  outputFileSync(schemaFilePath, schemaFileContent);
+    throw new Error("STUB");
 }
 
 export async function emitSchemaDefinitionFile(

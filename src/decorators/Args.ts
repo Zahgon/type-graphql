@@ -14,11 +14,5 @@ export function Args(
   paramTypeFnOrOptions?: ReturnTypeFunc | ValidateOptions,
   maybeOptions?: ValidateOptions,
 ): ParameterDecorator {
-  const { options, returnTypeFunc } = getTypeDecoratorParams(paramTypeFnOrOptions, maybeOptions);
-  return (prototype, propertyKey, parameterIndex) => {
-    getMetadataStorage().collectHandlerParamMetadata({
-      kind: "args",
-      ...getParamInfo({ prototype, propertyKey, parameterIndex, returnTypeFunc, options }),
-    });
-  };
+    throw new Error("STUB");
 }

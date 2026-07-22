@@ -13,10 +13,6 @@ export function InputType(
 ): ClassDecorator {
   const { name, options } = getNameDecoratorParams(nameOrOptions, maybeOptions);
   return target => {
-    getMetadataStorage().collectInputMetadata({
-      name: name || target.name,
-      target,
-      description: options.description,
-    });
+      throw new Error("STUB");
   };
 }

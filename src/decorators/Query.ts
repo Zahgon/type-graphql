@@ -12,7 +12,6 @@ export function Query(
 ): MethodDecorator {
   const { options, returnTypeFunc } = getTypeDecoratorParams(returnTypeFuncOrOptions, maybeOptions);
   return (prototype, methodName) => {
-    const metadata = getResolverMetadata(prototype, methodName, returnTypeFunc, options);
-    getMetadataStorage().collectQueryHandlerMetadata(metadata);
+      throw new Error("STUB");
   };
 }

@@ -7,12 +7,6 @@ export class AuthorizationError extends GraphQLError {
   };
 
   constructor(message = "Access denied! You don't have permission for this action!") {
-    super(message, {
-      extensions: {
-        code: "UNAUTHORIZED",
-      },
-    });
-
-    Object.setPrototypeOf(this, new.target.prototype);
+      throw new Error("STUB");
   }
 }

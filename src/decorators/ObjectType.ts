@@ -19,12 +19,6 @@ export function ObjectType(
   const interfaceClasses = options.implements && ([] as Function[]).concat(options.implements);
 
   return target => {
-    getMetadataStorage().collectObjectMetadata({
-      name: name || target.name,
-      target,
-      description: options.description,
-      interfaceClasses,
-      simpleResolvers: options.simpleResolvers,
-    });
+      throw new Error("STUB");
   };
 }

@@ -19,27 +19,5 @@ export function getParamInfo({
   returnTypeFunc,
   options = {},
 }: ParamInfo): CommonArgMetadata {
-  if (typeof propertyKey === "symbol") {
-    throw new SymbolKeysNotSupportedError();
-  }
-
-  const { getType, typeOptions } = findType({
-    metadataKey: "design:paramtypes",
-    prototype,
-    propertyKey,
-    parameterIndex,
-    argName,
-    returnTypeFunc,
-    typeOptions: options,
-  });
-
-  return {
-    target: prototype.constructor,
-    methodName: propertyKey,
-    index: parameterIndex,
-    getType,
-    typeOptions,
-    validateSettings: options.validate,
-    validateFn: options.validateFn,
-  };
+    throw new Error("STUB");
 }

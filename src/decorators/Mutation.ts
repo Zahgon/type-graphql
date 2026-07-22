@@ -15,7 +15,6 @@ export function Mutation(
 ): MethodDecorator {
   const { options, returnTypeFunc } = getTypeDecoratorParams(returnTypeFuncOrOptions, maybeOptions);
   return (prototype, methodName) => {
-    const metadata = getResolverMetadata(prototype, methodName, returnTypeFunc, options);
-    getMetadataStorage().collectMutationHandlerMetadata(metadata);
+      throw new Error("STUB");
   };
 }

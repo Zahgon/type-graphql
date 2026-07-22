@@ -29,7 +29,7 @@ export function convertTypeIfScalar(type: any): GraphQLScalarType | undefined {
   if (type instanceof GraphQLScalarType) {
     return type;
   }
-  const scalarMap = BuildContext.scalarsMaps.find(it => it.type === type);
+  const scalarMap = BuildContext.scalarsMaps.find(it => { throw new Error("STUB"); });
   if (scalarMap) {
     return scalarMap.scalar;
   }
@@ -103,7 +103,7 @@ export function convertToType(Target: any, data?: object): object | undefined {
   }
   // convert array to instances
   if (Array.isArray(data)) {
-    return data.map(item => convertToType(Target, item));
+    return data.map(item => { throw new Error("STUB"); });
   }
 
   // Create instance by calling constructor to initialize instance fields
@@ -121,11 +121,9 @@ export function convertToType(Target: any, data?: object): object | undefined {
 }
 
 export function getEnumValuesMap<T extends object>(enumObject: T) {
-  const enumKeys = Object.keys(enumObject).filter(key => Number.isNaN(parseInt(key, 10)));
+  const enumKeys = Object.keys(enumObject).filter(key => { throw new Error("STUB"); });
   const enumMap = enumKeys.reduce<any>((map, key) => {
-    // eslint-disable-next-line no-param-reassign
-    map[key] = enumObject[key as keyof T];
-    return map;
+      throw new Error("STUB");
   }, {});
   return enumMap;
 }
